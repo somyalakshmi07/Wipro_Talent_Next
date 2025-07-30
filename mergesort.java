@@ -28,40 +28,41 @@ class mergesort {
         mergedList.sort(null); // Sort the merged list
         System.out.println("Sorted Merged List: " + mergedList);
         // after sort find the all the elements before and after the element given by user(single number)
-        // System.out.print("enter an element to find its neighbors: ");
-        // int element = sc.nextInt();
-        // int index = mergedList.indexOf(element);
-        // if (index != -1) {
-        //     Integer before = (index > 0) ? mergedList.get(index - 1) : null;
-        //     Integer after = (index < mergedList.size() - 1) ? mergedList.get(index + 1) : null;
-        //     System.out.println("Element: " + element);
-        //     System.out.println("Before: " + before);
-        //     System.out.println("After: " + after);
-        // } else {
-        //     System.out.println("Element not found in the merged list.");
-        // }
-
-        // i also want u to print all the elements before thr element and after the element given by user
-        System.out.print("Enter an element to find its neighbors: ");
+        System.out.print("enter an element to find its neighbors: ");
         int element = sc.nextInt();
         int index = mergedList.indexOf(element);
         if (index != -1) {
+            Integer before = (index > 0) ? mergedList.get(index - 1) : null;
+            Integer after = (index < mergedList.size() - 1) ? mergedList.get(index + 1) : null;
             System.out.println("Element: " + element);
-            System.out.print("Elements before " + element + ": ");
-            for (int i = 0; i < index; i++) {
-                System.out.print(mergedList.get(i) + " ");
-            }
-            System.out.println();
-            System.out.print("Elements after " + element + ": ");
-            for (int i = index + 1; i < mergedList.size(); i++) {
-                System.out.print(mergedList.get(i) + " ");
-            }
-            System.out.println();
+            System.out.println("Before: " + before);
+            System.out.println("After: " + after);
         } else {
             System.out.println("Element not found in the merged list.");
         }
+
+        // i also want u to print all the elements before thr element and after the element given by user using Iterator
+
+    //     System.out.print("Enter an element to find its neighbors: ");
+    //     int element = sc.nextInt();
+    //     int index = mergedList.indexOf(element);
+    //     if (index != -1) {
+    //         System.out.println("Element: " + element);
+    //         System.out.print("Elements before: ");
+    //         for (int i = 0; i < index; i++) {
+    //             System.out.print(mergedList.get(i) + " ");
+    //         }
+    //         System.out.println();
+    //         System.out.print("Elements after: ");
+    //         for (int i = index + 1; i < mergedList.size(); i++) {
+    //             System.out.print(mergedList.get(i) + " ");
+    //         }
+    //         System.out.println();
+    //     } else {
+    //         System.out.println("Element not found in the merged list.");
+    //     }
         
-        sc.close();
+    //     sc.close();
     }
 
     public static ArrayList<Integer> mergeLists(ArrayList<Integer> list1, ArrayList<Integer> list2) {
