@@ -10,6 +10,23 @@
       padding: 0;
       min-height: 100vh;
     }
+    nav ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav a {
+      color: #388e3c;
+      text-decoration: none;
+      font-weight: bold;
+    }
     .container {
       max-width: 800px;
       margin: 40px auto;
@@ -455,6 +472,16 @@
       gap: 10px;
       margin-top: 10px;
     }
+    .merge-arrays-section {
+      margin-bottom: 28px;
+      background: #e0ffe6;
+      border-radius: 10px;
+      padding: 18px 20px;
+      box-shadow: 0 2px 6px rgba(60,120,60,0.06);
+      border: 1.5px solid #b7e778;
+      position: relative;
+    }
+
     .collection-actions button {
       padding: 8px 15px;
       font-size: 0.9em;
@@ -483,9 +510,9 @@
 <body>
   <nav>
     <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="basic.html">Basic</a></li>
-      <li><a href="collections.html">Collections</a></li>
+      <li><a href="index.html" class = "nav-link">Home</a></li>
+      <li><a href="basic.html"  class = "nav-link">Basic</a></li>
+      <li><a href="collections.html"  class = "nav-link">Collections</a></li>
     </ul>
   </nav>
 
@@ -515,10 +542,10 @@
       <span class="toddle" style="--delay:0.8s;">🍀</span>
     </div>
     
-    <h2><span class="eco-icon">🌳</span>JavaScript Collections<span class="eco-icon">🌻</span></h2>
+    <h2><span class="eco-icon">🌳</span>JAVA COLLECTIONS<span class="eco-icon">🌻</span></h2>
     
     <!-- Array Section -->
-    <div class="collection-section">
+    <div class="collection-section" id = "arrayCollection">
       <h5><span class="eco-icon">🌸</span>Array Operations</h5>
       <div class="collection-item">
         <input type="text" id="arrayInput" placeholder="Enter comma-separated values">
@@ -530,6 +557,23 @@
         <button onclick="arrayShift()">Shift</button>
         <button onclick="arrayUnshift()">Unshift</button>
         <button onclick="arraySort()">Sort</button>
+      </div>
+      <div class="collection-output" id="arrayResult">
+        Array will appear here
+      </div>
+    </div>
+     <!-- Merge Arrays Section -->
+    <div class = "merge-arrays-section">
+      <h5><span class="eco-icon">🌸</span>Merge Arrays</h5>
+      <div class="collection-item">
+        <input type="text" id="array1Input" placeholder="Enter comma-separated values for Array 1">
+      </div>
+      <div class="collection-item">
+        <input type="text" id="array2Input" placeholder="Enter comma-separated values for Array 2">
+      </div>
+      <div class="collection-actions">
+        <button onclick="mergeArrays()">Merge Arrays</button>
+        <button onclick="askSortOrder()">Sort Merged Array</button>
       </div>
       <div class="collection-output" id="arrayResult">
         Array will appear here
@@ -596,6 +640,13 @@
     let myArray = [];
     let mySet = new Set();
     let myMap = new Map();
+
+    // --- New Arrays and Merge Function ---
+    let array1 = [];
+    let array2 = [];
+    function mergeArrays() {
+      // merging logic here
+    }
     
     // --- Array Functions ---
     function createArray() {
@@ -610,10 +661,17 @@
     }
     
     function arrayPush() {
-      const input = document.getElementById('arrayInput').value;
+      const input = prompt("Enter element or comma-separated array:", "");
       if (input) {
-        myArray.push(input);
-        updateArrayOutput();
+        // Check if the input is a comma-separated array
+        if (input.includes(',')) {
+          const newElements = input.split(',').map(item => item.trim());
+          myArray.push(...newElements); // Push multiple elements using spread
+          updateArrayOutput();
+        } else {
+          myArray.push(input); // Push a single element
+          updateArrayOutput();
+        }
         showConfetti();
       }
     }
@@ -653,11 +711,59 @@
     
     function updateArrayOutput(message = "") {
       const output = document.getElementById('arrayResult');
-      output.innerHTML = message ? `<span style="color:#388e3c">${message}</span><br>` : '';
+      output.innerHTML = `Array created: [${myArray.join(', ')}] (Length: ${myArray.length})`;
       output.innerHTML += `Array: [${myArray.join(', ')}] (Length: ${myArray.length})`;
+
       output.classList.add('animated-output');
       setTimeout(() => output.classList.remove('animated-output'), 1000);
     }
+        // --- New Array 1 Functions ---
+   
+        // --- Merged Array function ---
+    function mergeArrays() {
+      const input1 = document.getElementById('array1Input').value;
+      const input2 = document.getElementById('array2Input').value;
+      createArray1();
+      createArray2();
+      const mergedArray = [...array1, ...array2];
+      updateMergedArrayOutput(mergedArray);
+      showConfetti();
+      updateProgress();
+      showFunFact();
+    }
+    function sortMergedArray() {
+            const input1 = document.getElementById('array1Input').value;
+      const input2 = document.getElementById('array2Input').value;
+      createArray1();
+      createArray2();
+      const mergedArray = [...array1, ...array2].sort((a, b) => a - b);
+      updateMergedArrayOutput(mergedArray);
+    }
+
+
+        function createArray1() {
+      const input = document.getElementById('array1Input').value;
+      if (input) {
+        array1 = input.split(',').map(item => item.trim());
+      }
+    }
+        // --- New Array 2 Functions ---
+    function createArray2() {
+      const input = document.getElementById('array2Input').value;
+      if (input) {
+        array2 = input.split(',').map(item => item.trim());
+      }
+    }
+
+
+    function updateMergedArrayOutput(mergedArray) {
+      const output = document.getElementById('arrayResult');
+      output.innerHTML = `Merged Array: [${mergedArray.join(', ')}] (Length: ${mergedArray.length})`;
+      output.classList.add('animated-output');
+      setTimeout(() => output.classList.remove('animated-output'), 1000);
+    }
+
+
     
     // --- Set Functions ---
     function createSet() {

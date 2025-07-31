@@ -18,10 +18,11 @@ public class TestAssertions {
       String[] expectedArray = {"one", "two", "three"};
       String[] resultArray =  {"one", "two", "three"};
 
-      //Check that two objects are equal
+      // Check that two objects are equal using the .equals() method.
+      // For Strings, this compares the content. This will pass.
       assertEquals(str1, str2);
 
-      //Check that a condition is true
+      // Check that a condition is true. This will pass.
       assertTrue (val1 < val2);
 
       //Check that a condition is false
