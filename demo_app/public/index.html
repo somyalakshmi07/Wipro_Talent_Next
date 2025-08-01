@@ -423,14 +423,43 @@
       0%, 100% { opacity: 0.7; }
       50% { opacity: 1; }
     }
+    nav {
+      background-color: #388e3c; /* A darker green from the theme */
+      padding: 10px 0;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: inline-block;
+    }
+    nav li {
+      display: inline-block;
+      margin: 0 20px;
+    }
+    nav a {
+      color: #fffbe7;
+      text-decoration: none;
+      font-size: 1.3em;
+      padding: 8px 15px;
+      border-radius: 20px;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    nav a:hover, nav a.active {
+      background-color: #fffbe7;
+      color: #388e3c;
+      font-weight: bold;
+    }
   </style>
 
 </head>
 <body>
-  <nav>
+<nav>
   <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="basic.html">Basic</a></li>
+    <li><a href="home.html" class="active">Home</a></li>
+    <li><a href="index.html">Basic</a></li>
     <li><a href="collections.html">Collections</a></li>
   </ul>
 </nav>
