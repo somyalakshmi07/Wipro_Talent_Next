@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom'; 
+import axios from 'axios';
 import validation from './loginvalidation';
 
 function Login() {
+  const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({}); // Initialize errors state
@@ -28,6 +30,26 @@ function Login() {
 
     alert(`Logging in with Email: ${email}`);
     // Here you would typically handle the login logic, e.g., API call
+    const values = {
+        email: email,
+        password: password
+    };
+
+    axios.post('http://localhost:8081/login', values)
+        .then(res => {
+            console.log(res.data);
+            alert('login successful!');
+            if (res.data === 'success'){
+                navigate('/home'); 
+            }
+            else {
+                alert('login failed');
+            }
+        })
+        .catch(err => {
+            console.error(err);
+            alert('login failed. Please try again.');
+        });
   };
 
   return (

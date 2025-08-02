@@ -1,26 +1,47 @@
 // write a react code to create a signup page similar to the login page
 import React, { useState } from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom'; // ✅ update this line
+
 function Signup() {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
     const [name, setName] = useState('');
     const handleSignup = (e) => {
-        e.preventDefault();
-        // Basic validation
-        if (!email || !password || !confirmPassword || !name) {
-            alert('Please fill in all fields.');
-            return;
-        }
-        if (password !== confirmPassword) {
-            alert('Passwords do not match.');
-            return;
-        }
-        alert(`Signing up with Email: ${email}, Name: ${name}`);
-        // Here you would typically handle the signup logic, e.g., API call
+    e.preventDefault();
+
+    // Basic validation
+    if (!email || !password || !confirmPassword || !name) {
+        alert('Please fill in all fields.');
+        return;
     }
+
+    if (password !== confirmPassword) {
+        alert('Passwords do not match.');
+        return;
+    }
+
+    const values = {
+        name: name,
+        email: email,
+        password: password
+    };
+
+    axios.post('http://localhost:8081/signup', values)
+        .then(res => {
+            console.log(res.data);
+            alert('Signup successful!');
+            navigate('/'); // Redirect to login page after successful signup
+        })
+        .catch(err => {
+            console.error(err);
+            alert('Signup failed. Please try again.');
+        });
+};
+
     return (
         <div className="login-container">
             <div className="login-form-wrapper">
