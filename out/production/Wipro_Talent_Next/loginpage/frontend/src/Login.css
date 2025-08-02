@@ -1,0 +1,94 @@
+/* Using a playful and readable font */
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap');
+
+.login-container {
+  font-family: 'Nunito', sans-serif;
+  background-color: #f0f8f0; /* Light mint green, eco-friendly */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.login-form-wrapper {
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 25px; /* Rounded corners for a friendly look */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-form-wrapper h2 {
+  color: #2e8b57; /* SeaGreen, a nice eco color */
+  margin-bottom: 25px;
+  font-size: 2.5rem;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: bold;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #dcedc8; /* Light green border */
+  border-radius: 15px; /* More rounded corners */
+  box-sizing: border-box;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #6baf8d; /* A darker green on focus */
+}
+
+.login-btn, .create-account-btn {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.login-btn {
+  background-color: #3cb371; /* MediumSeaGreen */
+  color: white;
+}
+
+.login-btn:hover {
+  background-color: #2e8b57; /* SeaGreen */
+  transform: translateY(-2px);
+}
+
+.create-account-btn {
+  background-color: #ffc107; /* A friendly yellow/orange */
+  color: #333;
+}
+
+.create-account-btn:hover {
+    background-color: #ffb300;
+    transform: translateY(-2px);
+}
+
+.terms-text {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}

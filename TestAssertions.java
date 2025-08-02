@@ -1,5 +1,7 @@
+import org.junit.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class TestAssertions {
 
@@ -20,7 +22,7 @@ public class TestAssertions {
 
       // Check that two objects are equal using the .equals() method.
       // For Strings, this compares the content. This will pass.
-      assertEquals(str1, str2);
+      assertEquals( "h1", "hi");
 
       // Check that a condition is true. This will pass.
       assertTrue (val1 < val2);

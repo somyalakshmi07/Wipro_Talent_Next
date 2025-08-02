@@ -3,7 +3,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
  
-public class Main {
+public class Mergedarray {
     public static void main(String[] args) {
         Integer[] arr1 = {3, 7, 1};
         Integer[] arr2 = {9, 4, 6};
